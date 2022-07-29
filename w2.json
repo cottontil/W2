@@ -165,13 +165,13 @@
               "host": "i686-mingw32",
               "archiveFileName": "mips-compiler.zip",
               "size": "203767243",
-              "url": "https://github.com/cottontil/W2/blob/main/Compiler/mips-compiler-windows.zip",
+              "url": "https://github.com/cottontil/W2/blob/main/Compiler/mips-compiler-windows.zip"
             },
             {
               "host": "x86_64-apple-darwin",
               "archiveFileName": "mips-compiler-mac.zip",
               "size": "53745656",
-              "url": "https://github.com/cottontil/W2/raw/main/Compiler/mips-compiler-mac.zip",
+              "url": "https://github.com/cottontil/W2/raw/main/Compiler/mips-compiler-mac.zip"
             }
           ]
         }
