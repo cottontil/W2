@@ -163,9 +163,9 @@
           "systems": [
             {
               "host": "x86_64-apple-darwin",
-              "archiveFileName": "mips-compiler-mac.zip",
+              "archiveFileName": "mips-compiler.zip",
               "size": "53745656",
-              "url": "https://github.com/cottontil/W2/raw/main/Compiler/mips-compiler-mac.zip"
+              "url": "https://github.com/cottontil/W2/raw/main/Compiler/mips-compiler.zip"
             }
           ]
         }
