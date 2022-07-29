@@ -162,12 +162,6 @@
           "version": "GNU-Tools-2015.01-7-for-MIPS-MTI-Bare-Metal-4.9.2",
           "systems": [
             {
-              "host": "i686-mingw32",
-              "archiveFileName": "mips-compiler.zip",
-              "size": "203767243",
-              "url": "https://github.com/cottontil/W2/blob/main/Compiler/mips-compiler-windows.zip"
-            },
-            {
               "host": "x86_64-apple-darwin",
               "archiveFileName": "mips-compiler-mac.zip",
               "size": "53745656",
