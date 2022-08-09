@@ -19,7 +19,7 @@
           },
           "url": "https://github.com/cottontil/W2/raw/main/mac/HardwareFiles/w2-mac-1.1.0.zip",
           "archiveFileName": "w2-mac-1.1.0.zip",
-          "size": "28962329",
+          "size": "28951941",
           "boards": [
             {
               "name": "W2 Develop Board"
@@ -43,7 +43,7 @@
             {
               "host": "x86_64-apple-darwin",
               "archiveFileName": "ToolChains.zip",
-              "size": "52787820",
+              "size": "52528217",
               "url": "https://github.com/cottontil/W2/raw/main/mac/Compiler/ToolChains.zip"
             }
           ]
