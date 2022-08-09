@@ -29,7 +29,7 @@
             {
               "packager": "W2",
               "name": "ToolChains",
-              "version": "Toolchains"
+              "version": "7.3.0"
             }
           ]
         }
