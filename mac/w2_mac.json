@@ -1,0 +1,54 @@
+{
+  "packages": [
+    {
+      "name": "W2",
+      "maintainer": "Camel Micro",
+      "websiteURL": "http://camelmicro.com/",
+      "email": "support@camelmicro.com",
+      "help": {
+        "online": "http://camelmicro.com/"
+      },
+      "platforms": [
+        {
+          "name": "W2 Develop Board",
+          "architecture": "MIPS",
+          "version": "1.1.0",
+          "category": "Contributed",
+          "help": {
+            "online": "http://camelmicro.com/"
+          },
+          "url": "https://github.com/cottontil/W2/raw/main/mac/HardwareFiles/w2-mac-1.1.0.zip",
+          "archiveFileName": "w2-mac-1.1.0.zip",
+          "size": "28962329",
+          "boards": [
+            {
+              "name": "W2 Develop Board"
+            }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "W2",
+              "name": "ToolChains",
+              "version": "Toolchains"
+            }
+          ]
+        }
+      ],
+
+      "tools": [
+        {
+          "name": "ToolChains",
+          "version": "7.3.0",
+          "systems": [
+            {
+              "host": "x86_64-apple-darwin",
+              "archiveFileName": "ToolChains.zip",
+              "size": "52787820",
+              "url": "https://github.com/cottontil/W2/raw/main/mac/Compiler/ToolChains.zip"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
