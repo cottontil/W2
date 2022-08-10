@@ -42,9 +42,9 @@
           "systems": [
             {
               "host": "x86_64-apple-darwin",
-              "archiveFileName": "ToolChains.zip",
+              "archiveFileName": "ToolChains.tar.gz",
               "size": "52528217",
-              "url": "https://github.com/cottontil/W2/raw/main/mac/Compiler/ToolChains.zip"
+              "url": "https://github.com/cottontil/W2/raw/main/mac/Compiler/ToolChains.tar.gz"
             }
           ]
         }
