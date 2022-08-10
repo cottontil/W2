@@ -17,8 +17,8 @@
           "help": {
             "online": "http://camelmicro.com/"
           },
-          "url": "https://github.com/cottontil/W2/raw/main/mac/HardwareFiles/w2-mac-1.1.0.zip",
-          "archiveFileName": "w2-mac-1.1.0.zip",
+          "url": "https://github.com/cottontil/W2/raw/main/mac/HardwareFiles/w2-mac-1.1.0.tar.gz",
+          "archiveFileName": "w2-mac-1.1.0.tar.gz",
           "size": "28951941",
           "boards": [
             {
