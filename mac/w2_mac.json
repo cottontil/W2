@@ -19,7 +19,7 @@
           },
           "url": "https://github.com/cottontil/W2/raw/main/mac/HardwareFiles/w2-mac-1.1.0.tar.gz",
           "archiveFileName": "w2-mac-1.1.0.tar.gz",
-          "size": "28951941",
+          "size": "28945621",
           "boards": [
             {
               "name": "W2 Develop Board"
@@ -28,8 +28,8 @@
           "toolsDependencies": [
             {
               "packager": "W2",
-              "name": "ToolChains",
-              "version": "7.3.0"
+              "name": "mips-compiler",
+              "version": "ToolChains-7.3.0"
             }
           ]
         }
@@ -37,8 +37,8 @@
 
       "tools": [
         {
-          "name": "ToolChains",
-          "version": "7.3.0",
+          "name": "mips-compiler",
+          "version": "ToolChains-7.3.0",
           "systems": [
             {
               "host": "x86_64-apple-darwin",
