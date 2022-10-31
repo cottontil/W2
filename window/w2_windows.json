@@ -19,8 +19,8 @@
           },
           "url": "https://github.com/cottontil/W2/raw/main/window/HardwareFiles/w2-1.1.0.zip",
           "archiveFileName": "w2-1.1.0.zip",
-          "size": "104636",
-          "checksum": "MD5:c278c0f2d29f0c32d0aac9ea923ff4db",
+          "size": "103857",
+          "checksum": "MD5:c897b7fd4ea8a5ea5f50138692e3ebe1",
           "boards": [
             {
               "name": "W2 Develop Board"
