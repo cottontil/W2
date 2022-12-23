@@ -10,17 +10,21 @@
 #define READ "r"
 #define WAIT 50
 
+#include <string>
+#include <vector>
+
 namespace writeUtils {
 
     void writeBytes(long long address, unsigned char *buffer, int bytes);
 
     void writeWord(long long address, unsigned char* word);
 
-    const char* formattedReadInstruction(long long address);
+    const char* formattedReadInstruction(long long address, int length);
 
-    const char* byteToAsciiString(unsigned char c);
+    std::string byteToAsciiString(unsigned char c);
 
-    int asciiStringToInt(unsigned char* bytes);
+    void uploadBin(long long address, std::vector<unsigned char>& buffer);
+
 }
 
 

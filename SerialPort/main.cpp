@@ -23,14 +23,76 @@
 #include "writeUtils.h"
 
 #define BAUD_RATE 9600
-#define BIN_PATH "../Binary/w2_hello.ino.ld.bin"
+#define BIN_PATH "../Binary/test.bin"
 
 using namespace std;
+
+void printResponseBuffer(unsigned char* buffer, int words) {
+    int offset = 0;
+    for(int i = 0; i < words; i++) {
+        for (int j = 0; j < WORD_BYTES*2; j++) {
+            printf("%c", buffer[i*8 + j + offset]);
+        }
+        offset++;
+        printf("\n");
+    }
+}
+
+void testRegister() {
+    int length = 4;
+    unsigned char response[length];
+    long long address = 0x1f800b07;
+    readUtils::readAddress(response, address, length);
+
+    unsigned char response2[length];
+    long long address2 = 0x1f800004;
+    readUtils::readAddress(response2, address2, length);
+}
+
+void testReadWrite() {
+    int words = 1;
+
+    long long address = 0x10000000;
+    unsigned char buffer[4];
+    buffer[0] = 0x31; buffer[1] = 0x32; buffer[2] = 0x33; buffer[3] = 0x34;
+
+    writeUtils::writeBytes(address, buffer, words);
+    printf("finished writing buffer1\n");
+
+    long long address2 = 0x10000004;
+    unsigned char buffer2[4];
+    buffer2[0] = 0x35; buffer2[1] = 0x36; buffer2[2] = 0x37; buffer2[3] = 0x38;
+
+    writeUtils::writeBytes(address2, buffer2, words);
+    printf("finished writing buffer2\n");
+
+    unsigned char response[CAPACITY];
+    readUtils::readAddress(response, address, 2);
+
+    printResponseBuffer(response, 2);
+}
+
+void testReadBin() {
+    printf("\nstarting to read from bin\n\n");
+    vector<unsigned char> buffer;
+    readUtils::readBin(buffer, BIN_PATH);
+
+    printf("finished reading from bin\n");
+
+    long long address = 0x10000000;
+    writeUtils::uploadBin(address, buffer);
+    printf("finished uploading buffer\n");
+
+    unsigned char response[buffer.size()*4];
+    readUtils::readAddress(response, address, buffer.size()/4);
+    printf("finished reading buffer\n");
+    printResponseBuffer(response, buffer.size()/4);
+}
 
 int main(int argc, const char * argv[]) {
 
 //     Open port, and connect to a device
-    const char* devicePathStr = "/dev/tty.usbserial-14410";
+    const char* devicePathStr = "/dev/tty.usbserial-14510";
     const int baudRate = BAUD_RATE;
     int sfd = openAndConfigureSerialPort(devicePathStr, baudRate);
     if (sfd < 0) {
@@ -53,33 +115,11 @@ int main(int argc, const char * argv[]) {
     }
 
     readUtils::setupFlash();
-    int length = 4;
-    unsigned char response[length];
-    long long address = 0x1f800b07;
-    readUtils::readConsecutiveBytes(response, address, length);
 
-//    ifstream ifs (BIN_PATH, std::ifstream::binary);
-//    int length = readUtils::getBinSize(ifs);
-//    unsigned char buffer[length]; memset(buffer,0,sizeof(buffer));
-//    readUtils::readBin(buffer, ifs, length);
+//    testRegister();
+//    testReadWrite();
+//    testReadBin();
 
-//    int length = 4;
-//    unsigned char buffer[length];
-//    buffer[0] = 0x12; buffer[1] = 0x34; buffer[2] = 0x56; buffer[3] = 0x78;
-//
-//
-//    long long address = 0x10000000;
-//    writeUtils::writeBytes(address, buffer, length);
-//
-//    printf("finished writing bytes\n");
-//
-//    unsigned char response[length];
-//    readUtils::readConsecutiveBytes(response, address, length);
-
-//    for(int i = 0; i < length; i++) {
-//        printf("%d = %d\n", i, int(response[i]));
-//    }
-//    printf("finished reading bytes\n");
     closeSerialPort();
     return 0;
 }
