@@ -13,10 +13,11 @@
 #include <boost/asio/serial_port.hpp>
 #include <boost/system/error_code.hpp>
 #include <boost/system/system_error.hpp>
-#include <boost/bind.hpp>
+// #include <boost/bind.hpp>
+# include <boost/bind/bind.hpp> 
 #include <boost/thread.hpp>
-#include <thread>
-
+// #include <thread>
+#include "mingw.thread.h"
 #include <string>
 #include <vector>
 

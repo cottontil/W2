@@ -2,19 +2,15 @@
 // Created by Aaron Ye on 1/7/23.
 //
 
+// g++ -std=c++11 -w -D_WIN32_WINNT=0x0501 -I ..\..\boost_1_81_0 -I ..\..\mingw_threads serialport.cpp upload.cpp utils.cpp -o upload -lws2_32
 
 #include "serialport.h"
+#include "windows.h"
 #include <iostream>
 
-enum flush_type
-{
-    flush_receive = TCIFLUSH,
-    flush_send = TCOFLUSH,
-    flush_both = TCIOFLUSH
-};
-
-void flush_serial_port(boost::asio::serial_port& serial_port, flush_type what, boost::system::error_code& error) {
-    if (0 == ::tcflush(serial_port.lowest_layer().native_handle(), what)) {
+void flush_serial_port(boost::asio::serial_port& serial_port, boost::system::error_code& error) {
+    // if (0 == ::tcflush(serial_port.lowest_layer().native_handle(), what)) {
+    if (0 == PurgeComm(serial_port.lowest_layer().native_handle(), PURGE_RXCLEAR | PURGE_TXCLEAR)) {
         error = boost::system::error_code();
     }
     else {
@@ -23,10 +19,10 @@ void flush_serial_port(boost::asio::serial_port& serial_port, flush_type what, b
 }
 
 bool SerialPort::open_port(const char *port_name, int baud_rate) {
-    if(port) {
-        cout << "Error: port is already open!\n";
-        return 0;
-    }
+    // if(port) {
+    //     cout << "Error: port is already open!\n";
+    //     return 0;
+    // }
     port = new serial_port (io_service);
     boost::system::error_code ec;
     port->open(port_name, ec);
@@ -40,11 +36,12 @@ bool SerialPort::open_port(const char *port_name, int baud_rate) {
     port->set_option(boost::asio::serial_port_base::parity(boost::asio::serial_port_base::parity::none));
     port->set_option(boost::asio::serial_port_base::flow_control(boost::asio::serial_port_base::flow_control::none));
 
-    flush_serial_port(*port, flush_type::flush_both, ec);
+    flush_serial_port(*port, ec);
 
     read_bytes();
     std::thread t( [this] () {this->io_service.run(); });
-    thread_.swap(t);
+    // thread_.swap(t);
+    std::swap(thread_,t);
 
     cout << "port opened!\n";
     return 1;
