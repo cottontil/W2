@@ -55,7 +55,7 @@ void write_bytes(SerialPort& sp, long long address, unsigned char* buffer, ssize
     }
 }
 
-void write_bytes_fast(SerialPort& sp, long long address, unsigned char* buffer, ssize_t bytes) {
+void write_bytes_16(SerialPort& sp, long long address, unsigned char* buffer, ssize_t bytes) {
     ssize_t offset = 0;
     while (offset < bytes) {
         if (bytes - offset >= 16) {
@@ -69,9 +69,27 @@ void write_bytes_fast(SerialPort& sp, long long address, unsigned char* buffer, 
     }
 }
 
+void write_bytes_256(SerialPort& sp, long long address, unsigned char* buffer, ssize_t bytes) {
+    ssize_t offset = 0;
+    while (offset < bytes) {
+        if (bytes - offset >= 256) {
+            write_words(sp, address + offset, buffer + offset, 256);
+            offset += 256 * WORD_BYTES;
+        }
+        else {
+			return write_bytes_16(sp, address + offset, buffer + offset, bytes - offset);
+//            write_words(sp,address + offset, buffer + offset, 1);
+//            offset += WORD_BYTES;
+        }
+    }
+}
+
 void utils::upload_bin(SerialPort& sp, long long address, std::vector<unsigned char>& buffer) {
 //    write_bytes(sp, address, &buffer[0], buffer.size());
-    write_bytes_fast(sp, address, &buffer[0], buffer.size());
+//    write_bytes_16(sp, address, &buffer[0], buffer.size());
+
+	write_bytes_256(sp, address, &buffer[0], buffer.size());	
+    
 }
 
 void utils::read_bin(std::vector<unsigned char>& buffer, const std::string& path) {
