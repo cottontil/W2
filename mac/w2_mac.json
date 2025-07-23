@@ -43,6 +43,7 @@
             {
               "host": "x86_64-apple-darwin",
               "archiveFileName": "ToolChains.tar.gz",
+               "checksum": "SHA-256:ee8ac97d41d56e0e7afd24a1c06367c48d97c9458923a7ea646880a8e7dd28a9",
               "size": "52528217",
               "url": "https://github.com/cottontil/W2/raw/main/mac/Compiler/ToolChains.tar.gz"
             }
